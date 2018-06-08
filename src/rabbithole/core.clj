@@ -28,7 +28,4 @@
   [s]
   {:pre [(string? s)]}
   (some #(when (is-cycle-of? s %) %) (potential-cycles s)))
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+
