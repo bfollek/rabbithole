@@ -1,4 +1,5 @@
-(ns rabbithole.core)
+(ns rabbithole.core
+  (:require [clojure.string :as str]))
 
 (defn potential-cycles
   "Return a collection of all substrings of s that are also potential cycles of s, including s."
@@ -19,7 +20,7 @@
   [s cyc]
   {:pre [(and (string? s) (string? cyc))]}
   (let [cyc-chars (take (count s) (cycle cyc))
-        cyc-s (apply str cyc-chars)]
+        cyc-s (str/join cyc-chars)]
     (= cyc-s s)))
 
 (defn find-cycle
