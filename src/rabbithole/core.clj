@@ -29,3 +29,17 @@
   {:pre [(string? s)]}
   (some #(when (is-cycle-of? s %) %) (potential-cycles s)))
 
+(defn zip-up
+  "Given two or more seqs, return a seq of vectors. The nth vector comprises the nth element from each of the input seqs. Examples:
+
+    (zip-up [1 2] [3 4])
+    => ([1 3] [2 4])
+
+    (zip-up [1 2 3] [4 5 6] [7 8 9])
+    => ([1 4 7] [2 5 8] [3 6 9])
+
+  "
+  [& seqs]
+  (if seqs
+    (apply (partial map vector) seqs)
+    ()))

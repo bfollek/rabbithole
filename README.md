@@ -1,6 +1,6 @@
 # rabbithole
 
-A Clojure library of utility functions for the [wonderland](https://github.com/gigasquid/wonderland-clojure-katas) katas.
+A Clojure library of utility functions.
 
 ## License
 

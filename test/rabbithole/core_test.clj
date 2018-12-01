@@ -29,3 +29,15 @@
     (is (= "ab" (find-cycle "abababab"))))
   (testing "find-cycle edge cases"
     (is (= "" (find-cycle "")))))
+
+(deftest test-zip-up
+  (testing "common cases"
+    (is (= '([1 3] [2 4]) (zip-up '(1 2) '(3 4))))
+    (is (= '([1 3] [2 4]) (zip-up [1 2] [3 4])))
+    (is (= '([1 4 7] [2 5 8]) (zip-up [1 2 3] [4 5 6] [7 8])))
+    (is (= '([1 4 7] [2 5 8] [3 6 9]) (zip-up [1 2 3] [4 5 6] [7 8 9]))))
+  (testing "zip-up edge cases"
+    (is (= () (zip-up)))
+    (is (= () (zip-up [])))
+    (is (= () (zip-up [] [])))
+    (is (= () (zip-up [1] [])))))
