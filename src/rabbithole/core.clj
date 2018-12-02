@@ -44,3 +44,8 @@
   (if seqs
     (apply (partial map vector) seqs)
     ()))
+
+(defn to-int
+  "Convert an integer string to an integer"
+  [s]
+  (Integer/parseInt s))

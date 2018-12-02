@@ -43,3 +43,11 @@
     (is (= () (zip-up [])))
     (is (= () (zip-up [] [])))
     (is (= () (zip-up [1] [])))))
+
+(deftest test-to-int
+  (testing "common cases"
+    (is (= 41211 (to-int "+41211")))
+    (is (= -55 (to-int "-55")))
+    (is (= 0 (to-int "0")))
+    (is (= 812 (to-int "812")))
+    (is (= 7 (to-int "7")))))
