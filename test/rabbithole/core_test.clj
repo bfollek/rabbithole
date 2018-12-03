@@ -51,3 +51,10 @@
     (is (= 0 (to-int "0")))
     (is (= 812 (to-int "812")))
     (is (= 7 (to-int "7")))))
+
+(deftest test-vec-index
+  (testing "common cases"
+    (is (= 0 (vec-index [9 8 7 6] 9)))
+    (is (= 1 (vec-index [:a :b :c]  :b)))
+    (is (= 5 (vec-index ["hat" "bat" "cat" "sat" "cravat" "mat"] "mat")))
+    (is (= -1 (vec-index [:a :b :c]  :z)))))

@@ -49,3 +49,8 @@
   "Convert an integer string to an integer"
   [s]
   (Integer/parseInt s))
+
+(defn vec-index
+  "Returns the index of key in v, or -1 if key is not found."
+  [v key]
+  (.indexOf v key))
