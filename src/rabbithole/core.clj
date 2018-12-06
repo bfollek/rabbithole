@@ -54,3 +54,8 @@
   "Returns the index of key in v, or -1 if key is not found."
   [v key]
   (.indexOf v key))
+
+(defn read-lines
+  [file-name]
+  (with-open [rdr (clojure.java.io/reader file-name)]
+    (doall (line-seq rdr))))
