@@ -56,6 +56,11 @@
   (.indexOf v key))
 
 (defn read-lines
+  "Read and return all lines from a text file. Ensures the file is closed."
   [file-name]
   (with-open [rdr (clojure.java.io/reader file-name)]
     (doall (line-seq rdr))))
+
+(def flat-set
+  "flatten, then convert to set"
+  (comp set flatten))

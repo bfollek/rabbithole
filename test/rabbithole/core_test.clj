@@ -58,3 +58,10 @@
     (is (= 1 (vec-index [:a :b :c]  :b)))
     (is (= 5 (vec-index ["hat" "bat" "cat" "sat" "cravat" "mat"] "mat")))
     (is (= -1 (vec-index [:a :b :c]  :z)))))
+
+(deftest test-flat-set
+  (testing "common cases"
+    (is (= #{1 2 3 4 5} (flat-set [1 2 3 4 5])))
+    (is (= #{1 2 3 4 5} (flat-set [1 [2 3 4] 5])))
+    (is (= #{1 2 3 4 5} (flat-set [1 2 3 4 5 3 4 5])))
+    (is (= #{1 2 3 4 5} (flat-set [1 [2 3 4 5] 3 4 5])))))
