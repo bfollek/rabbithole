@@ -50,7 +50,9 @@
     (is (= -55 (to-int "-55")))
     (is (= 0 (to-int "0")))
     (is (= 812 (to-int "812")))
-    (is (= 7 (to-int "7")))))
+    (is (= 7 (to-int "7"))))
+  (testing "edge cases"
+    (is (= nil (to-int nil)))))
 
 (deftest test-vec-index
   (testing "common cases"

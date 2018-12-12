@@ -46,9 +46,10 @@
     ()))
 
 (defn to-int
-  "Convert an integer string to an integer"
+  "To-int converts an integer string to an integer.
+  If `s` is nil, it returns nil."
   [s]
-  (Integer/parseInt s))
+  (some-> s Integer/parseInt)) ; some-> short-circuits when nil
 
 (defn vec-index
   "Returns the index of key in v, or -1 if key is not found."
