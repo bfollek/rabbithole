@@ -75,6 +75,9 @@
 (defmulti to-lower class)
 (defmethod to-lower Character [c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
+(defmethod to-lower nil [c] nil)
+
 (defmulti to-upper class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
+(defmethod to-upper nil [c] nil)

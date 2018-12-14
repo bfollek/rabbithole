@@ -78,7 +78,9 @@
     (is (= \a (to-lower \a))))
   (testing "common cases - string"
     (is (= "abc" (to-lower "ABC")))
-    (is (= "abc" (to-lower "aBc")))))
+    (is (= "abc" (to-lower "aBc"))))
+  (testing "edge cases"
+    (is (= nil (to-lower nil)))))
 
 (deftest test-to-upper
   (testing "common cases - char"
@@ -86,4 +88,6 @@
     (is (= \A (to-upper \A))))
   (testing "common cases - string"
     (is (= "ABC" (to-upper "abc")))
-    (is (= "ABC" (to-upper "aBc")))))
+    (is (= "ABC" (to-upper "aBc"))))
+  (testing "edge cases"
+    (is (= nil (to-upper nil)))))
