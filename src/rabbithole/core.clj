@@ -71,3 +71,10 @@
   From mikera on stackoverflow:
   https://stackoverflow.com/questions/11670941/generate-character-sequence-from-a-to-z-in-clojure"
   (map char (range (int start) (inc (int end)))))
+
+(defmulti to-lower class)
+(defmethod to-lower Character [c] (Character/toLowerCase c))
+(defmethod to-lower String [s] (str/lower-case s))
+(defmulti to-upper class)
+(defmethod to-upper Character [c] (Character/toUpperCase c))
+(defmethod to-upper String [s] (str/upper-case s))

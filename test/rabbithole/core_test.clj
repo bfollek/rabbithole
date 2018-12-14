@@ -71,3 +71,19 @@
 (deftest test-char-range
   (testing "common cases"
     (is (= '(\a \b \c \d \e) (char-range \a \e)))))
+
+(deftest test-to-lower
+  (testing "common cases - char"
+    (is (= \a (to-lower \A)))
+    (is (= \a (to-lower \a))))
+  (testing "common cases - string"
+    (is (= "abc" (to-lower "ABC")))
+    (is (= "abc" (to-lower "aBc")))))
+
+(deftest test-to-upper
+  (testing "common cases - char"
+    (is (= \A (to-upper \a)))
+    (is (= \A (to-upper \A))))
+  (testing "common cases - string"
+    (is (= "ABC" (to-upper "abc")))
+    (is (= "ABC" (to-upper "aBc")))))
