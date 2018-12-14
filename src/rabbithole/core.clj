@@ -65,3 +65,9 @@
 (def flat-set
   "flatten, then convert to set"
   (comp set flatten))
+
+(defn char-range [start end]
+  "Char-range returns a lazy sequence of chars from `start` to `end`, inclusive.
+  From mikera on stackoverflow:
+  https://stackoverflow.com/questions/11670941/generate-character-sequence-from-a-to-z-in-clojure"
+  (map char (range (int start) (inc (int end)))))

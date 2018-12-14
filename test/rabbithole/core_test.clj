@@ -67,3 +67,7 @@
     (is (= #{1 2 3 4 5} (flat-set [1 [2 3 4] 5])))
     (is (= #{1 2 3 4 5} (flat-set [1 2 3 4 5 3 4 5])))
     (is (= #{1 2 3 4 5} (flat-set [1 [2 3 4 5] 3 4 5])))))
+
+(deftest test-char-range
+  (testing "common cases"
+    (is (= '(\a \b \c \d \e) (char-range \a \e)))))
