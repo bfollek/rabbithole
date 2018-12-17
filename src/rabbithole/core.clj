@@ -45,12 +45,6 @@
     (apply (partial map vector) seqs)
     ()))
 
-(defn to-int
-  "To-int converts an integer string to an integer.
-  If `s` is nil, it returns nil."
-  [s]
-  (some-> s Integer/parseInt)) ; some-> short-circuits when nil
-
 (defn coll-index
   "Coll-index returns the index of `key` in `coll`, or -1 if `key` is not found."
   [coll key]
@@ -80,4 +74,9 @@
 (defmulti to-upper class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
-(defmethod to-upper nil [c] nil)
+(defmethod to-upper nil [_] nil)
+
+(defmulti to-int class)
+(defmethod to-int Character [c] (int c))
+(defmethod to-int String [s] (Integer/parseInt s))
+(defmethod to-int nil [_] nil)
