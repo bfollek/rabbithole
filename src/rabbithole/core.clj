@@ -51,10 +51,10 @@
   [s]
   (some-> s Integer/parseInt)) ; some-> short-circuits when nil
 
-(defn vec-index
-  "Returns the index of key in v, or -1 if key is not found."
-  [v key]
-  (.indexOf v key))
+(defn coll-index
+  "Coll-index returns the index of `key` in `coll`, or -1 if `key` is not found."
+  [coll key]
+  (.indexOf coll key))
 
 (defn read-lines
   "Read and return all lines from a text file. Ensures the file is closed."

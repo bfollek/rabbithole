@@ -54,12 +54,16 @@
   (testing "edge cases"
     (is (= nil (to-int nil)))))
 
-(deftest test-vec-index
+(deftest test-coll-index
   (testing "common cases"
-    (is (= 0 (vec-index [9 8 7 6] 9)))
-    (is (= 1 (vec-index [:a :b :c]  :b)))
-    (is (= 5 (vec-index ["hat" "bat" "cat" "sat" "cravat" "mat"] "mat")))
-    (is (= -1 (vec-index [:a :b :c]  :z)))))
+    (is (= 0 (coll-index [9 8 7 6] 9)))
+    (is (= 1 (coll-index [:a :b :c]  :b)))
+    (is (= 5 (coll-index ["hat" "bat" "cat" "sat" "cravat" "mat"] "mat")))
+    (is (= -1 (coll-index [:a :b :c] :z)))
+    (is (= 0 (coll-index '(9 8 7 6) 9)))
+    (is (= 1 (coll-index '(:a :b :c)  :b)))
+    (is (= 5 (coll-index '("hat" "bat" "cat" "sat" "cravat" "mat") "mat")))
+    (is (= -1 (coll-index '(:a :b :c) :z)))))
 
 (deftest test-flat-set
   (testing "common cases"

@@ -1,4 +1,4 @@
-(defproject org.clojars.bfollek/rabbithole "0.2.1-SNAPSHOT"
+(defproject org.clojars.bfollek/rabbithole "0.2.2-SNAPSHOT"
   :description "Utility functions"
   :url "https://github.com/bfollek/rabbithole"
   :license {:name "Eclipse Public License"
