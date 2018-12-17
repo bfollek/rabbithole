@@ -45,13 +45,6 @@
     (is (= () (zip-up [1] [])))))
 
 (deftest test-to-int
-  (testing "common cases - char"
-    (is (= 97 (to-int \a)))
-    (is (= 65 (to-int \A)))
-    (is (= 109 (to-int \m)))
-    (is (= 77 (to-int \M)))
-    (is (= 122 (to-int \z)))
-    (is (= 90 (to-int \Z))))
   (testing "common cases - string"
     (is (= 41211 (to-int "+41211")))
     (is (= -55 (to-int "-55")))

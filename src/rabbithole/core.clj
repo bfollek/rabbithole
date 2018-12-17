@@ -77,6 +77,5 @@
 (defmethod to-upper nil [_] nil)
 
 (defmulti to-int class)
-(defmethod to-int Character [c] (int c))
 (defmethod to-int String [s] (Integer/parseInt s))
 (defmethod to-int nil [_] nil)
