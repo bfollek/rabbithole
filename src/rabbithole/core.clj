@@ -1,4 +1,6 @@
 (ns rabbithole.core
+  "Utility functions"
+  (:require [clojure.java.io :as io])
   (:require [clojure.string :as str]))
 
 (defn potential-cycles
@@ -46,36 +48,44 @@
     ()))
 
 (defn coll-index
-  "Coll-index returns the index of `key` in `coll`, or -1 if `key` is not found."
-  [coll key]
-  (.indexOf coll key))
+  "Coll-index returns the index of `item` in `coll`, or -1 if `item` is not found."
+  [coll item]
+  (.indexOf coll item))
 
 (defn read-lines
   "Read and return all lines from a text file. Ensures the file is closed."
   [file-name]
-  (with-open [rdr (clojure.java.io/reader file-name)]
+  (with-open [rdr (io/reader file-name)]
     (doall (line-seq rdr))))
 
 (def flat-set
   "flatten, then convert to set"
   (comp set flatten))
 
-(defn char-range [start end]
+(defn char-range
   "Char-range returns a lazy sequence of chars from `start` to `end`, inclusive.
   From mikera on stackoverflow:
   https://stackoverflow.com/questions/11670941/generate-character-sequence-from-a-to-z-in-clojure"
+  [start end]
   (map char (range (int start) (inc (int end)))))
 
-(defmulti to-lower class)
+(defn to-int
+  "Convert string to int. Handles nil safely."
+  [s]
+  (if s
+    (Integer/parseInt s)
+    nil))
+
+(defmulti to-lower
+  "Convert string or char to lower-case. Handles nil safely."
+  class)
 (defmethod to-lower Character [c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
 (defmethod to-lower nil [c] nil)
 
-(defmulti to-upper class)
+(defmulti to-upper
+  "Convert string or char to upper-case. Handles nil safely."
+  class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
 (defmethod to-upper nil [_] nil)
-
-(defmulti to-int class)
-(defmethod to-int String [s] (Integer/parseInt s))
-(defmethod to-int nil [_] nil)
