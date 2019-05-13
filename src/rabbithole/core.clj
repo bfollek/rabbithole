@@ -69,22 +69,26 @@
   [start end]
   (map char (range (int start) (inc (int end)))))
 
-(defn to-int
-  "Convert string to int. Handles nil safely."
-  [s]
-  (if s
-    (Integer/parseInt s)
-    nil))
+(defmulti to-int
+  "Convert string to int.
+  Handles nil safely. Handles existing Integer/Long values safely."
+  class)
+(defmethod to-int String [s] (Integer/parseInt s))
+(defmethod to-int nil [_] nil)
+(defmethod to-int Integer [i] i)
+(defmethod to-int Long [l] l)
 
 (defmulti to-lower
-  "Convert string or char to lower-case. Handles nil safely."
+  "Convert string or char to lower-case.
+  Handles nil safely."
   class)
 (defmethod to-lower Character [c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
-(defmethod to-lower nil [c] nil)
+(defmethod to-lower nil [_] nil)
 
 (defmulti to-upper
-  "Convert string or char to upper-case. Handles nil safely."
+  "Convert string or char to upper-case.
+  Handles nil safely."
   class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))

@@ -52,6 +52,8 @@
     (is (= 812 (to-int "812")))
     (is (= 7 (to-int "7"))))
   (testing "edge cases"
+    (is (= 987 (to-int 987))) ; Long
+    (is (= 987 (to-int (int 987)))) ; Integer
     (is (= nil (to-int nil)))))
 
 (deftest test-coll-index
