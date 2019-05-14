@@ -71,25 +71,25 @@
 
 (defmulti to-int
   "Convert string to int.
-  Handles nil safely. Handles existing Integer/Long values safely."
+  For convenience, return Integer, Long, and nil values unchanged."
   class)
 (defmethod to-int String [s] (Integer/parseInt s))
-(defmethod to-int nil [_] nil)
+(defmethod to-int nil [n] n)
 (defmethod to-int Integer [i] i)
 (defmethod to-int Long [l] l)
 
 (defmulti to-lower
   "Convert string or char to lower-case.
-  Handles nil safely."
+  For convenience, return nil values unchanged."
   class)
 (defmethod to-lower Character [c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
-(defmethod to-lower nil [_] nil)
+(defmethod to-lower nil [n] n)
 
 (defmulti to-upper
   "Convert string or char to upper-case.
-  Handles nil safely."
+  For convenience, return nil values unchanged."
   class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
-(defmethod to-upper nil [_] nil)
+(defmethod to-upper nil [n] n)
