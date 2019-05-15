@@ -70,26 +70,21 @@
   (map char (range (int start) (inc (int end)))))
 
 (defmulti to-int
-  "Convert string to int.
-  For convenience, return Integer, Long, and nil values unchanged."
+  "Convert string to int. Return nil for nil values."
   class)
 (defmethod to-int String [s] (Integer/parseInt s))
-(defmethod to-int nil [n] n)
-(defmethod to-int Integer [i] i)
-(defmethod to-int Long [l] l)
+(defmethod to-int nil [_] nil)
 
 (defmulti to-lower
-  "Convert string or char to lower-case.
-  For convenience, return nil values unchanged."
+  "Convert string or char to lower-case. Return nil for nil values."
   class)
 (defmethod to-lower Character [c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
-(defmethod to-lower nil [n] n)
+(defmethod to-lower nil [_] nil)
 
 (defmulti to-upper
-  "Convert string or char to upper-case.
-  For convenience, return nil values unchanged."
+  "Convert string or char to upper-case. Return nil for nil values."
   class)
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
-(defmethod to-upper nil [n] n)
+(defmethod to-upper nil [_] nil)
