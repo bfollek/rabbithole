@@ -3,6 +3,14 @@
   (:require [clojure.java.io :as io])
   (:require [clojure.string :as str]))
 
+(defn assoc-if-missing
+  "If k is not in m, add it with the value v. If k is already in m, do nothing.
+  In either case, return m."
+  [m k v]
+  (if (contains? m k)
+    m
+    (assoc m k v)))
+
 (defn potential-cycles
   "Return a collection of all substrings of s that are also potential cycles of s, including s."
   [s]

@@ -2,6 +2,18 @@
   (:require [clojure.test :refer :all]
             [rabbithole.core :refer :all]))
 
+(deftest test-assoc-if-missing
+  (testing "assoc-if-missing common cases"
+    (is (= {:a 1}
+           (assoc-if-missing {} :a 1)))
+    (is (= {:a 1}
+           (assoc-if-missing {:a 1} :a 1))))
+  (testing "assoc-if-missing edge cases"
+    (is (= {:a nil}
+           (assoc-if-missing {} :a nil)))
+    (is (= {:a nil}
+           (assoc-if-missing {:a nil} :a 99)))))
+
 (deftest test-potential-cycles
   (testing "potential-cycles common cases"
     (is (= '("ab" "aba" "abab")
