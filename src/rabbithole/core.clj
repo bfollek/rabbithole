@@ -97,7 +97,6 @@
 (defmethod to-upper String [s] (str/upper-case s))
 (defmethod to-upper nil [_] nil)
 
-
 (defn update-multi
   "Update multiple values in a map `m`. `keys` is a vector of the keys
   whose corresponding values will be updated. `f` is a function that takes
