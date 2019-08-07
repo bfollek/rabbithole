@@ -1,5 +1,6 @@
 (ns rabbithole.core-test
   (:require [clojure.test :refer :all]
+            [clojure.string :as str]
             [rabbithole.core :refer :all]))
 
 (deftest test-assoc-if-missing
@@ -107,3 +108,8 @@
     (is (= "ABC" (to-upper "aBc"))))
   (testing "edge cases"
     (is (= nil (to-upper nil)))))
+
+(deftest test-update-multi
+  (testing "common cases"
+    (is (= {"a" "foo", "b" "bar", "c" "bang"} (update-multi  {"a" "  foo ", "b" "   bar", "c" "bang "} ["a" "b" "c"] str/trim)))
+    (is (= {:a 2 :b 3 :c 4} (update-multi  {:a 1 :b 2 :c 3} [:a :b :c] inc)))))

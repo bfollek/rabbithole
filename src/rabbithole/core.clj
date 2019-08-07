@@ -1,7 +1,7 @@
 (ns rabbithole.core
   "Utility functions"
-  (:require [clojure.java.io :as io])
-  (:require [clojure.string :as str]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (defn assoc-if-missing
   "If k is not in m, add it with the value v. If k is already in m, do nothing.
@@ -96,3 +96,11 @@
 (defmethod to-upper Character [c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
 (defmethod to-upper nil [_] nil)
+
+
+(defn update-multi
+  "Update multiple values in a map `m`. `keys` is a vector of the keys
+  whose corresponding values will be updated. `f` is a function that takes
+  the old value and returns the new one. `update-multi` returns the updated map."
+  [m keys f]
+  (reduce #(update %1 %2 f) m keys))
