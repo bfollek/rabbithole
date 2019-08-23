@@ -55,9 +55,10 @@
     (apply (partial map vector) seqs)
     ()))
 
-(defn coll-index
-  "Coll-index returns the index of `item` in `coll`, or -1 if `item` is not found."
-  [coll item]
+(defn index-of
+  "index-of returns the index of `item` in `coll`, or -1 if `item` is not found.
+  It wraps the java .indexOf method."
+  [^java.util.List coll item]
   (.indexOf coll item))
 
 (defn read-lines
@@ -86,14 +87,14 @@
 (defmulti to-lower
   "Convert string or char to lower-case. Return nil for nil values."
   class)
-(defmethod to-lower Character [c] (Character/toLowerCase c))
+(defmethod to-lower Character [^java.lang.Character c] (Character/toLowerCase c))
 (defmethod to-lower String [s] (str/lower-case s))
 (defmethod to-lower nil [_] nil)
 
 (defmulti to-upper
   "Convert string or char to upper-case. Return nil for nil values."
   class)
-(defmethod to-upper Character [c] (Character/toUpperCase c))
+(defmethod to-upper Character [^java.lang.Character c] (Character/toUpperCase c))
 (defmethod to-upper String [s] (str/upper-case s))
 (defmethod to-upper nil [_] nil)
 
