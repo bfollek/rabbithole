@@ -2,6 +2,10 @@
 
 A Clojure library of utility functions.
 
+## Testing
+
+`lein test` runs the tests.
+
 ## License
 
 Copyright © 2018 Bob Follek

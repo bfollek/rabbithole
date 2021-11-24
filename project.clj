@@ -6,5 +6,5 @@
   :dependencies [[org.clojure/clojure "1.10.0"]]
   :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
                                     :username :env/clojars_user
-                                    :password :env/clojars_pass
+                                    :password :env/clojars_deploy_token
                                     :sign-releases true}]])

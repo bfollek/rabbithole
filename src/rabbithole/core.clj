@@ -62,7 +62,7 @@
   (.indexOf coll item))
 
 (defn read-lines
-  "Read and return all lines from a text file. Ensures the file is closed."
+  "Read a text file and return all lines as a seq. Ensures the file is closed."
   [file-name]
   (with-open [rdr (io/reader file-name)]
     (doall (line-seq rdr))))
@@ -99,8 +99,8 @@
 (defmethod to-upper nil [_] nil)
 
 (defn update-multi
-  "Update multiple values in a map `m`. `keys` is a vector of the keys
+  "Update multiple values in a map `m`. `ks` is a vector of the keys
   whose corresponding values will be updated. `f` is a function that takes
   the old value and returns the new one. `update-multi` returns the updated map."
-  [m keys f]
-  (reduce #(update %1 %2 f) m keys))
+  [m ks f]
+  (reduce #(update %1 %2 f) m ks))
