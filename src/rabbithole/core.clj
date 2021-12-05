@@ -51,7 +51,9 @@
 
   "
   [& seqs]
+  ;; Catch the no-args-passed case.
   (if seqs
+    ;; `seqs` is a collection, so `(map vector seqs)` won't work. We need `apply`.
     (apply (partial map vector) seqs)
     ()))
 
@@ -62,7 +64,8 @@
   (.indexOf coll item))
 
 (defn read-lines
-  "Read a text file and return all lines as a seq. Ensures the file is closed."
+  "Read a text file and return all lines as a seq. Ensures the file is closed.
+   Not lazy. That may matter on huge files."
   [file-name]
   (with-open [rdr (io/reader file-name)]
     (doall (line-seq rdr))))

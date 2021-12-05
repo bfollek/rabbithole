@@ -55,7 +55,8 @@
     (is (= () (zip-up)))
     (is (= () (zip-up [])))
     (is (= () (zip-up [] [])))
-    (is (= () (zip-up [1] [])))))
+    (is (= () (zip-up [1] [])))
+    (is (= () (zip-up [] [1])))))
 
 (deftest test-to-int
   (testing "common cases - string"
