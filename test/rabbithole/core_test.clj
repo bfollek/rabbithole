@@ -1,7 +1,7 @@
 (ns rabbithole.core-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest is testing]]
             [clojure.string :as str]
-            [rabbithole.core :refer :all]))
+            [rabbithole.core :refer [assoc-if-missing char-range find-cycle flat-set index-of is-cycle-of? potential-cycles to-int to-lower to-upper transpose update-multi zip-up]]))
 
 (deftest test-assoc-if-missing
   (testing "assoc-if-missing common cases"
