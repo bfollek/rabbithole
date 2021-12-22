@@ -104,7 +104,7 @@
 (defn transpose
   "Given a collection whose elements are collections, i.e. a matrix, return a vector of vectors where each original row is now a column. From https://twitter.com/kelvinmai/status/1466914942318043139"
   [matrix]
-  (apply map vector matrix))
+  (apply mapv vector matrix))
 
 (defn update-multi
   "Update multiple values in a map `m`. `ks` is a vector of the keys
