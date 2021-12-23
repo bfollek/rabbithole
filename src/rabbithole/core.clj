@@ -102,7 +102,9 @@
 (defmethod to-upper nil [_] nil)
 
 (defn transpose
-  "Given a collection whose elements are collections, i.e. a matrix, return a vector of vectors where each original row is now a column. From https://twitter.com/kelvinmai/status/1466914942318043139"
+  "Given a collection whose elements are collections, i.e. a matrix, return a vector of vectors where each original row is now a column. From https://twitter.com/kelvinmai/status/1466914942318043139
+
+  Caveat: A jagged matrix, where rows have different numbers of columns, uses the row with the smallest number of columns to set the column size. Extra columns in other rows are dropped."
   [matrix]
   (apply mapv vector matrix))
 

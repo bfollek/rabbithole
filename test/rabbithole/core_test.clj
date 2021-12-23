@@ -114,7 +114,10 @@
   (testing "common cases"
     (is (= [[1 4 7] [2 5 8] [3 6 9]] (transpose [[1 2 3] [4 5 6] [7 8 9]])))
     (is (= [[1 4 7 10] [2 5 8 11] [3 6 9 12]] (transpose [[1 2 3] [4 5 6] [7 8 9] [10 11 12]])))
-    (is (= [[1 4] [2 5] [3 6]] (transpose [[1 2 3] [4 5 6]])))))
+    (is (= [[1 4] [2 5] [3 6]] (transpose [[1 2 3] [4 5 6]])))
+    ;; For jagged vectors, drop elements past the shortest row size.
+    (is (= [[1 4] [2 5]] (transpose [[1 2 3] [4 5]])))
+    (is (= [[1 3] [2 4]] (transpose [[1 2] [3 4 5]])))))
 
 (deftest test-update-multi
   (testing "common cases"
