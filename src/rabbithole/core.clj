@@ -102,9 +102,16 @@
 (defmethod to-upper nil [_] nil)
 
 (defn transpose
-  "Given a collection whose elements are collections, i.e. a matrix, return a vector of vectors where each original row is now a column. From https://twitter.com/kelvinmai/status/1466914942318043139
+  "Given a collection whose elements are collections, i.e. a matrix, return a vector of vectors where each row is now a column. From https://twitter.com/kelvinmai/status/1466914942318043139
 
-  Caveat: A jagged matrix, where rows have different numbers of columns, uses the row with the smallest number of columns to set the column size. Extra columns in other rows are dropped."
+  Caveat: If `matrix` is jagged, the number of rows in the transposed matrix is the size of the shortest row in the original matrix. `transpose` ignores the extra elements in longer rows. For example:
+   
+  rabbithole.core=> (def matrix [[1 2 3] [4 5]])
+  rabbithole.core=> (transpose matrix)
+  [[1 4] [2 5]]
+   
+  `transpose` ignored the 3 element at ((matrix 0) 2).
+  "
   [matrix]
   (apply mapv vector matrix))
 
